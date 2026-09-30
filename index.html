@@ -1,0 +1,78 @@
+<!doctype html>
+<!-- Toko HCB — HTML, CSS, JavaScript. Lihat README.md untuk aktivasi admin.
+Tanpa config.js yang terisi, katalog memakai data awal lokal dari script.js.
+Setelah Supabase aktif, data dikelola melalui admin.html. -->
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#174b37">
+    <title>Toko HCB — Herbal Cageur Bageur</title>
+    <meta name="description" content="Toko HCB — Herbal Cageur Bageur menjual produk herbal, perawatan, dan aksesori merek GM. Lihat produk, harga acuan, dan siapkan pesanan Anda.">
+    <meta property="og:title" content="Toko HCB — Herbal Cageur Bageur">
+    <meta property="og:description" content="Belanja produk herbal, perawatan, dan aksesori merek GM di Toko HCB — Herbal Cageur Bageur.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="assets/logo/logo-hcb.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="vendor/supabase-2.117.2.js" defer></script>
+    <script src="config.js" defer></script>
+    <script src="backend.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <svg class="icon-definitions" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.2 4.2"/></symbol>
+      <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 7h14l1 14H4L5 7Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+      <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 3c-7 0-15 2-15 9a7 7 0 0 0 7 7c7 0 8-9 8-16Z"/><path d="M4 21 15 10"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v.2"/></symbol>
+    </svg>
+    <a class="skip-link" href="#produk">Langsung ke produk</a>
+    <div class="announcement"><span id="announcement-text">Selamat datang di Toko HCB</span><span class="announcement-brand">HERBAL · PERAWATAN · AKSESORI</span></div>
+    <header class="site-header" id="beranda">
+      <div class="header-inner wrap">
+        <a class="brand" href="#beranda" aria-label="Toko HCB — Herbal Cageur Bageur, beranda"><img class="brand-emblem" src="assets/logo/logo-hcb.png" alt="HCB" width="76" height="76" decoding="async"><span class="brand-lockup"><span class="brand-kicker">TOKO HERBAL</span><span class="brand-title">Cageur Bageur</span><span class="brand-rule" aria-hidden="true"></span></span></a>
+        <nav class="desktop-nav" aria-label="Navigasi utama"><a href="#beranda" class="active">Beranda</a><a href="#produk">Produk</a><a href="#tentang">Tentang Toko</a></nav>
+        <div class="header-actions"><button class="icon-button header-search" id="search-shortcut" aria-label="Cari produk"><svg class="icon"><use href="#i-search"/></svg></button><button class="cart-toggle" id="open-cart" aria-label="Buka keranjang, 0 produk"><svg class="icon"><use href="#i-bag"/></svg><span class="cart-label">Keranjang</span><span class="cart-count" id="cart-count">0</span></button></div>
+      </div>
+    </header>
+    <main>
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="eyebrow"><svg class="icon"><use href="#i-leaf"/></svg> TOKO HERBAL CAGEUR BAGEUR</div>
+          <h1 id="hero-title">Belanja herbal,<br>di <em>Toko HCB.</em></h1>
+          <p id="hero-description">Jelajahi produk merek GM, dari kapsul, madu, dan teh hingga perawatan serta aksesori.</p>
+          <a class="button primary" href="#produk">Pilih produk <svg class="icon"><use href="#i-arrow"/></svg></a>
+          <div class="hero-note"><span class="small-rule"></span> Penjualan produk herbal & perawatan</div>
+        </div>
+        <div class="hero-visual store-visual">
+          <div class="hero-visual-top"><span>PILIHAN DI TOKO HCB</span><svg class="icon"><use href="#i-bag"/></svg></div>
+          <div id="store-spotlight" class="store-spotlight" aria-label="Pilihan produk merek GM"></div>
+          <div class="hero-visual-bottom"><div><span class="hero-selection">Produk GM, pilihan Anda.</span><span class="hero-range">DIJUAL OLEH TOKO HCB</span></div><a class="round-link" href="#produk" aria-label="Lihat produk toko"><svg class="icon"><use href="#i-arrow"/></svg></a></div>
+        </div>
+      </section>
+      <div class="collection-strip wrap" aria-label="Ragam produk toko"><span><svg class="icon"><use href="#i-leaf"/></svg> Pilihan herbal & perawatan</span><span id="collection-count">18 pilihan produk merek GM</span><a href="#produk">Kenali setiap produknya <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+      <section class="catalog wrap" id="produk" aria-labelledby="catalog-title">
+        <div class="section-top"><div><div class="eyebrow">KATALOG TOKO HCB</div><h2 id="catalog-title">Belanja produk GM.</h2></div><label class="search-field"><svg class="icon"><use href="#i-search"/></svg><input id="product-search" type="search" placeholder="Cari produk herbal..." aria-label="Cari produk herbal" autocomplete="off"><kbd aria-hidden="true">/</kbd></label></div>
+        <div class="catalog-toolbar"><div class="filters" role="group" aria-label="Kategori produk"><button class="filter active" data-category="all" aria-pressed="true">Semua produk <span>18</span></button><button class="filter" data-category="herbal" aria-pressed="false">Herbal</button><button class="filter" data-category="minyak" aria-pressed="false">Minyak</button><button class="filter" data-category="perawatan" aria-pressed="false">Perawatan</button><button class="filter" data-category="aksesori" aria-pressed="false">Aksesori</button></div><label class="sort-label"><span class="sr-only">Urutkan produk</span><select id="product-sort"><option value="featured">Urutan pilihan</option><option value="price-asc">Harga terendah</option><option value="price-desc">Harga tertinggi</option><option value="name">Nama A–Z</option></select><svg class="icon"><use href="#i-chevron"/></svg></label></div>
+        <div class="results-meta"><span id="results-count" role="status" aria-live="polite">Menampilkan 18 produk</span><span id="price-overview">Harga produk</span></div>
+        <div class="product-grid" id="product-grid"></div><p id="catalog-error" role="alert" hidden></p>
+        <div class="empty-results" id="empty-results" hidden><svg class="icon"><use href="#i-search"/></svg><h3>Produk belum ditemukan</h3><p>Coba nama produk lain atau lihat seluruh produk toko.</p><button class="button secondary" id="reset-search">Lihat semua produk</button></div>
+        <p class="catalog-note"><svg class="icon"><use href="#i-info"/></svg><span id="price-note">Harga acuan dari <a href="https://pgrj.gusmusraksajasad.com/" target="_blank" rel="noopener noreferrer">katalog GM</a>, diperiksa 28 September 2026. Konfirmasikan harga jual Toko HCB, varian kemasan, dan ketersediaan sebelum memesan. Produk tanpa harga acuan ditandai “Tanya harga”.</span></p>
+      </section>
+      <section class="about wrap" id="tentang" aria-labelledby="about-title"><div class="about-left"><div class="eyebrow">TENTANG TOKO HCB</div><h2 id="about-title">Toko herbal,<br>untuk pilihan <em>Anda.</em></h2></div><div class="about-right"><p class="about-intro" id="about-name">Toko HCB — Herbal Cageur Bageur</p><p id="about-description">Toko HCB menjual produk herbal, perawatan, dan aksesori dari merek GM. Kami berfokus pada penjualan serta pelayanan pemesanan. Produk berasal dari merek atau produsen masing-masing; Toko HCB berperan sebagai penjual.</p><a class="text-link" href="#produk">Lihat produk yang dijual <svg class="icon"><use href="#i-arrow"/></svg></a><div id="store-contact" class="store-contact" hidden><p id="store-address-line" hidden><strong>Alamat</strong><span id="store-address"></span></p><p id="store-hours-line" hidden><strong>Jam operasional</strong><span id="store-hours"></span></p><a id="store-whatsapp" class="text-link" target="_blank" rel="noopener noreferrer" hidden>Hubungi toko melalui WhatsApp ↗</a></div></div></section>
+    </main>
+    <footer class="footer wrap"><a class="brand" href="#beranda" aria-label="Kembali ke beranda Toko HCB"><img class="brand-emblem" src="assets/logo/logo-hcb.png" alt="HCB" width="76" height="76" decoding="async"><span class="brand-lockup"><span class="brand-kicker">TOKO HERBAL</span><span class="brand-title">Cageur Bageur</span><span class="brand-rule" aria-hidden="true"></span></span></a><p id="footer-name">© 2026 Toko HCB — Herbal Cageur Bageur</p><a href="https://pgrj.gusmusraksajasad.com/" target="_blank" rel="noopener noreferrer">Katalog merek GM <svg class="icon"><use href="#i-arrow"/></svg></a><a class="admin-footer-link" href="admin.html">Admin toko</a></footer>
+    <dialog class="product-dialog" id="product-dialog" aria-labelledby="detail-title"><button class="icon-button dialog-close" data-close="product-dialog" aria-label="Tutup detail produk"><svg class="icon"><use href="#i-close"/></svg></button><div id="product-detail"></div></dialog>
+    <dialog class="cart-drawer" id="cart-dialog" aria-labelledby="cart-title"><div class="drawer-head"><div><div class="eyebrow">PILIHAN ANDA</div><h2 id="cart-title">Keranjang</h2></div><button class="icon-button" data-close="cart-dialog" aria-label="Tutup keranjang"><svg class="icon"><use href="#i-close"/></svg></button></div><div id="cart-content" class="cart-content"></div></dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden><svg class="icon"><use href="#i-check"/></svg><span id="toast-text"></span><button id="toast-cart">Lihat</button></div>
+    <noscript><p class="noscript">Aktifkan JavaScript untuk menampilkan katalog interaktif dan menggunakan keranjang. <a href="https://pgrj.gusmusraksajasad.com/">Lihat katalog GM</a>.</p></noscript>
+  </body>
+</html>
